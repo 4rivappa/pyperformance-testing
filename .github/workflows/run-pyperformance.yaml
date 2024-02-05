@@ -2,6 +2,8 @@ name: perform python performance test on multiple versions
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   pyperformance-test:
