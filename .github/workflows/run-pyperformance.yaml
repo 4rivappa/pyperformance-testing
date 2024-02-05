@@ -33,7 +33,9 @@ jobs:
     - name: Run pyperformance and capture the output
       id: script
       run: |
-        python -m pyperformance run -o "py${{ matrix.python-version | replace('.', '') }}.json"
+        version=${{ matrix.python-version }}
+        version_without_dot=$(echo $version | tr -d .)
+        python -m pyperformance run -o "py${version_without_dot}.json"
 
     - name: Auto Commit changes
       uses: stefanzweifel/git-auto-commit-action@v5
